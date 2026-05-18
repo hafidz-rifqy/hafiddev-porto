@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hafidz — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <!-- Config & Data -->
+  <script src="assets/js/config.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════ LOADING SCREEN ═══════════════ -->
+  <div id="loading">
+    <div class="ld-logo">
+      <div class="ld-logo-icon" id="ld-logo-icon">⬡</div>
+      <div>
+        <div class="ld-site-name" id="ld-site-name">hafiddev</div>
+      </div>
+    </div>
+    <div class="ld-subtitle" id="ld-subtitle">Portfolio — Loading System</div>
+
+    <div class="ld-ring-wrap">
+      <div class="ld-ring ld-ring-1"></div>
+      <div class="ld-ring ld-ring-2"></div>
+      <div class="ld-ring ld-ring-3"></div>
+      <div class="ld-ring-icon">⬡</div>
+    </div>
+
+    <div class="ld-steps" id="ld-steps">
+      <!-- Rendered by JS -->
+    </div>
+    <div class="ld-status" id="ld-status">Initializing...</div>
+  </div>
+
+  <!-- ═══════════════ MOUSE GLOW ═══════════════ -->
+  <div class="mouse-glow" id="mouseGlow"></div>
+
+  <!-- ═══════════════ BACKGROUND ═══════════════ -->
+  <canvas id="particles"></canvas>
+  <div class="bg-blobs">
+    <div class="blob" style="width:520px;height:520px;top:8%;left:8%;background:radial-gradient(circle,rgba(0,212,255,0.05) 0%,transparent 70%);"></div>
+    <div class="blob" style="width:420px;height:420px;top:45%;right:6%;background:radial-gradient(circle,rgba(168,85,247,0.06) 0%,transparent 70%);"></div>
+    <div class="blob" style="width:600px;height:600px;bottom:8%;left:30%;background:radial-gradient(circle,rgba(0,212,255,0.03) 0%,transparent 70%);"></div>
+  </div>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav id="navbar">
+    <a class="nav-brand" href="#hero">
+      <div class="nav-logo" id="nav-logo-icon">⬡</div>
+      <span class="nav-name" id="nav-site-name">hafiddev</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Project</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#social">Sosial</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <span class="theme-icon" id="theme-icon">☀️</span>
+      </button>
+      <button class="nav-cta" onclick="scrollTo('#contact')">Hire Me ✦</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#hero"       onclick="closeMenu()">Home</a>
+    <a href="#about"      onclick="closeMenu()">Tentang Saya</a>
+    <a href="#skills"     onclick="closeMenu()">Skills</a>
+    <a href="#projects"   onclick="closeMenu()">Project</a>
+    <a href="#experience" onclick="closeMenu()">Experience</a>
+    <a href="#social"     onclick="closeMenu()">Sosial Media</a>
+    <a href="#contact"    onclick="closeMenu()">Kontak</a>
+    <button class="mobile-theme-toggle" onclick="toggleTheme()">
+      <span id="mobile-theme-icon">☀️</span>
+      <span id="mobile-theme-label">Light Mode</span>
+    </button>
+  </div>
+
+  <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+  <main>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-rings">
+        <div class="h-ring" style="width:380px;height:380px;animation:spin 22s linear infinite;"></div>
+        <div class="h-ring" style="width:580px;height:580px;border-color:rgba(168,85,247,0.04);animation:spinR 32s linear infinite;"></div>
+        <div class="h-ring" style="width:760px;height:760px;animation:spin 44s linear infinite;"></div>
+      </div>
+      <div class="hero-content">
+        <div class="avatar-wrap">
+          <div class="avatar-inner">
+            <div class="avatar-circle" id="hero-avatar"><img src="gambarprofil.jpg" style="border-radius: 50%; width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="avatar-orbit"></div>
+            <div class="avatar-dot"></div>
+          </div>
+        </div>
+        <h1 class="hero-name">
+          <span style="color:var(--hero-name);" id="hero-first">hafid</span><span class="grad-text" id="hero-last">dev</span>
+        </h1>
+        <p class="hero-desc" id="hero-tagline">Membangun produk digital yang elegan, cepat, dan scalable.</p>
+        <div style="margin-bottom: 24px;">
+          <a href="#" onclick="openDescModal(); return false;" style="color:#00d4ff; text-decoration:underline; font-size:14px; font-weight:600; transition:all 0.3s ease;">✨ Kisah Perjalanan Saya click here ✨ </a>
+        </div>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">Lihat Project ↗</a>
+          <a href="#" class="btn-outline" id="hero-contact-btn" target="_blank" rel="noopener">Hubungi Saya</a>
+        </div>
+        <div class="scroll-hint">
+          <span>SCROLL</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-wrap fade-in">
+        <div class="sec-badge">✦ TENTANG SAYA ✦</div>
+        <h2 class="sec-h">About Me</h2>
+        <div class="sec-line"></div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>Saya adalah <strong style="color:#00d4ff;">Backend Developer</strong> dengan lebih pengaetahuan 11 bulan saya memulai untuk belajar sebagain backend developer.</p>
+            <p>Saya percaya bahwa kode yang baik bukan hanya yang bekerja, tetapi juga yang <strong style="color:#a855f7;">elegan, maintainable, dan scalable</strong>.</p>
+            <div class="about-tech" id="about-tech"></div>
+          </div>
+          <div class="stats-grid" id="stats-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-wrap fade-in">
+        <div class="sec-badge">✦ KEAHLIAN ✦</div>
+        <h2 class="sec-h">Tech Skills</h2>
+        <div class="sec-line"></div>
+        <div class="glass" style="padding:36px 44px;" id="skills-card">
+          <div id="skills-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-wrap fade-in">
+        <div class="sec-badge">✦ PORTFOLIO ✦</div>
+        <h2 class="sec-h">Projects</h2>
+        <div class="sec-line"></div>
+        <div class="proj-grid" id="proj-grid"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-wrap fade-in">
+        <div class="sec-badge">✦ PENGALAMAN BELAJAR ✦</div>
+        <h2 class="sec-h">Pengalaman Belajar</h2>
+        <div class="sec-line"></div>
+        <div class="exp-list" id="exp-list"></div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section id="social">
+      <div class="section-wrap fade-in">
+        <div class="sec-badge">✦ SOSIAL MEDIA ✦</div>
+        <h2 class="sec-h">Find Me Online</h2>
+        <div class="sec-line"></div>
+        <div class="social-grid" id="social-grid"></div>
+        <div class="wa-banner" id="wa-banner"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-wrap fade-in">
+        <div class="sec-badge">✦ KONTAK ✦</div>
+        <h2 class="sec-h">Get In Touch</h2>
+        <div class="sec-line"></div>
+        <div class="contact-inner">
+          <div class="contact-info">
+            <h3>Mari Berkolaborasi!</h3>
+            <p>Punya proyek menarik atau ingin berdiskusi? Saya siap membantu mewujudkan visi digital Anda.</p>
+            <div id="contact-details"></div>
+          </div>
+          <div class="contact-form" id="contact-form-wrap">
+            <div class="form-group form-row">
+              <div>
+                <label>Nama</label>
+                <input id="f-name" type="text" placeholder="John Doe">
+              </div>
+              <div>
+                <label>Email</label>
+                <input id="f-email" type="email" placeholder="john@email.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Subjek</label>
+              <input id="f-subject" type="text" placeholder="Kolaborasi Proyek">
+            </div>
+            <div class="form-group">
+              <label>Pesan</label>
+              <textarea id="f-msg" rows="5" placeholder="Ceritakan tentang proyek atau kebutuhan Anda..."></textarea>
+            </div>
+            <button class="form-submit" id="form-submit" onclick="submitForm()">Kirim Pesan ✦</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════ DESCRIPTION MODAL ═══════════════ -->
+  <div id="descModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>✦ Kisah Backend Saya ✦</h3>
+      <p>
+        Halo! Saya Hafidz. Ketertarikan saya pada dunia pemrograman membawa saya masuk ke <strong>SMK TI PELITA NUSANTARA</strong>, mengambil jurusan <strong>Rekayasa Perangkat Lunak</strong>. Selama belajar, saya menyadari bahwa logika server dan manajemen data adalah nyawa dari sebuah aplikasi digital yang andal.
+      </p>
+      <p>
+        Saya memegang prinsip: <em>"Lebih baik mulai belajar dari sekarang, daripada nanti kebingungan."</em> Motivasi ini mendorong saya untuk selalu konsisten mengasah logika pemrograman. Selama 11 bulan terakhir, saya mendalami arsitektur server, API, dan pengelolaan database.
+      </p>
+      <p style="margin-bottom: 24px;">
+        Saya meyakini bahwa setiap baris kode, termasuk proyek seperti platform perpustakaan digital ini, adalah jejak nyata dari dedikasi saya. Saya selalu terbuka terhadap tantangan baru, siap belajar dari kesalahan (error), dan bertekad penuh menjadi seorang Backend Developer profesional.
+      </p>
+      <button class="btn-primary" onclick="closeDescModal()" style="width: 100%; justify-content: center;">Tutup</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-logo">
+      <div class="nav-logo" id="footer-logo-icon">⬡</div>
+      <span class="nav-name" id="footer-site-name">Alex.dev</span>
+    </div>
+    <div class="footer-social" id="footer-social"></div>
+    <div class="footer-copy" id="footer-copy"></div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
